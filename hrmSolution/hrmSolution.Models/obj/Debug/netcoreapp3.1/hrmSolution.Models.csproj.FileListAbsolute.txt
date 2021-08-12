@@ -1,0 +1,9 @@
+D:\hrm\hrmSolution\hrmSolution.Models\bin\Debug\netcoreapp3.1\hrmSolution.Models.deps.json
+D:\hrm\hrmSolution\hrmSolution.Models\bin\Debug\netcoreapp3.1\hrmSolution.Models.dll
+D:\hrm\hrmSolution\hrmSolution.Models\bin\Debug\netcoreapp3.1\hrmSolution.Models.pdb
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.csprojAssemblyReference.cache
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.AssemblyInfoInputs.cache
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.AssemblyInfo.cs
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.csproj.CoreCompileInputs.cache
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.dll
+D:\hrm\hrmSolution\hrmSolution.Models\obj\Debug\netcoreapp3.1\hrmSolution.Models.pdb

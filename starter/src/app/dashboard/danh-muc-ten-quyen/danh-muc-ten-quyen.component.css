@@ -1,0 +1,34 @@
+.btn {
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  width: 60%;
+  margin-bottom: 15px;
+}
+
+.search-button {
+  margin: 0 8px;
+}
+.pagi {
+  width: 80% !important;
+  display: flex;
+
+}
+
+.btn1 {
+  display: flex;
+  margin: auto;
+  border-radius: 65px;
+}
+
+.pagination {
+  margin: 15px 0;
+
+
+  transform: translateX(300%);
+}
+
+input[type="text" i] {
+  padding: 3px 5px;
+}

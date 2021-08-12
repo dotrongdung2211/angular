@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "zxmvOTGRZAYVXkyBQROvugD/WMOgCSpKV5WXCBNHBVsPMYxRp4lg6h0MLDaa/5fTbZ7saXP3Wuamm1cVx9uXKw==",
+  "success": true,
+  "projectFilePath": "D:\\hrm\\hrmSolution\\hrmSolution.Models\\hrmSolution.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.8\\microsoft.aspnetcore.http.features.5.0.8.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

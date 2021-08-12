@@ -1,0 +1,140 @@
+<form nz-form [formGroup]="validateForm" nzLayout="horizontal" enctype="multipart/form-data">
+
+  <nz-form-item>
+    <nz-form-label nzFor="cTaikhoan" nzSpan="3" nzRequired>Tài khoản</nz-form-label>
+    <nz-form-control nzSpan="21" nzErrorTip="Cần nhập tài khoản từ 3 ký tự trở lên">
+      <input nz-input formControlName="cTaikhoan" id="cTaikhoan" name="cTaikhoan" placeholder="Tài khoản đăng nhập" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label *ngIf="acction=='add'" nzFor="cMatkhau" nzSpan="3" nzRequired>Mật khẩu</nz-form-label>
+    <nz-form-control *ngIf="acction=='add'" nzSpan="8" nzErrorTip="Cần nhập mật khẩu từ 3 - 16 ký tự">
+      <input nz-input type="password" formControlName="cMatkhau" id="cMatkhau" name="cMatkhau"
+        placeholder="Mật khẩu đăng nhập" />
+    </nz-form-control>
+    <nz-form-label *ngIf="acction=='add'" nzFor="checkPassword" nzSpan="5" nzRequired>Xác nhận mật khẩu</nz-form-label>
+    <nz-form-control *ngIf="acction=='add'" nzSpan="8" nzErrorTip="Mật khẩu không trùng nhau">
+      <input nz-input type="password" formControlName="checkPassword" id="checkPassword" name="checkPassword"
+        placeholder="Nhập lại mật khẩu" />
+    </nz-form-control>
+    <nz-form-label *ngIf="acction=='edit'" nzFor="cMatkhau" nzSpan="3">Mật khẩu</nz-form-label>
+    <nz-form-control *ngIf="acction=='edit'" nzSpan="8" nzErrorTip="Cần nhập mật khẩu từ 3 - 16 ký tự">
+      <input nz-input type="password" formControlName="cMatkhau" id="cMatkhau" name="cMatkhau"
+        placeholder="Nhập nếu đổi mật khẩu" />
+    </nz-form-control>
+    <nz-form-label *ngIf="acction=='edit'" nzFor="checkPassword" nzSpan="5">Xác nhận mật khẩu</nz-form-label>
+    <nz-form-control *ngIf="acction=='edit'" nzSpan="8" nzErrorTip="Mật khẩu không trùng nhau">
+      <input nz-input type="password" formControlName="checkPassword" id="checkPassword" name="checkPassword"
+        placeholder="Nhập lại mật khẩu" />
+    </nz-form-control>
+  </nz-form-item>
+  <!-- <nz-form-item *ngIf="acction=='add'">
+
+  </nz-form-item> -->
+
+  <!-- <nz-form-item *ngIf="acction=='edit'">
+    <nz-form-label nzFor="cTaikhoan" nzSpan="6"
+      >Tài khoản</nz-form-label
+    >
+    <nz-form-control nzSpan="18">
+      <input
+        nz-input
+        formControlName="cTaikhoan"
+        id="cTaikhoan"
+        name="cTaikhoan"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="acction=='edit'">
+    <nz-form-label nzFor="cMatkhau" nzSpan="6"
+      >Mật khẩu</nz-form-label
+    >
+    <nz-form-control nzSpan="18" nzErrorTip="Cần nhập mật khẩu từ 3 - 16 ký tự">
+      <input
+        nz-input
+        type="password"
+        formControlName="cMatkhau"
+        id="cMatkhau"
+        name="cMatkhau"
+        placeholder="Nếu đổi mật khẩu thì nhập"
+      />
+    </nz-form-control>
+  </nz-form-item> -->
+  <nz-form-item>
+    <nz-form-label nzFor="cTen" nzSpan="3" nzRequired>Họ và tên</nz-form-label>
+    <nz-form-control nzSpan="8" nzErrorTip="Họ và tên không được để trống">
+      <input nz-input formControlName="cTen" id="cTen" name="cTen" placeholder="Nhập họ và tên"
+        oninput="this.value = this.value.toUpperCase()" />
+    </nz-form-control>
+    <nz-form-label nzFor="cGioitinh" nzSpan="5" nzRequired>Giới tính</nz-form-label>
+    <nz-form-control nzSpan="8" nzErrorTip="Cần chọn giới tính">
+      <nz-select formControlName="cGioitinh" id="cGioitinh" name="cGioitinh" nzAllowClear>
+        <nz-option nzLabel="Nam" [nzValue]="1"></nz-option>
+        <nz-option nzLabel="Nữ" [nzValue]="2"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="cNgaysinh" nzSpan="3" nzRequired>Ngày sinh</nz-form-label>
+    <nz-form-control nzSpan="8" nzErrorTip="Cần chọn ngày sinh">
+      <nz-date-picker name="cNgaysinh" nzFormat="dd/MM/yyyy" id="cNgaysinh" formControlName="cNgaysinh"
+        nzPlaceHolder="Chọn ngày sinh"></nz-date-picker>
+    </nz-form-control>
+    <nz-form-label nzFor="cChucvu" nzSpan="5" nzRequired>Chức vụ</nz-form-label>
+    <nz-form-control nzSpan="8" nzErrorTip="Cần chọn chức vụ">
+      <nz-select formControlName="cChucvu" id="cChucvu" name="cChucvu" nzAllowClear>
+        <nz-option nzLabel="Quản lý" [nzValue]="1"></nz-option>
+        <nz-option nzLabel="Nhân viên" [nzValue]="2"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="cDiachi" nzSpan="3" nzRequired>Địa chỉ</nz-form-label>
+    <nz-form-control nzSpan="21" nzErrorTip="Địa chỉ không được để trống">
+      <input nz-input formControlName="cDiachi" id="cDiachi" name="cDiachi" placeholder="Nhập địa chỉ" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="cDienthoai" nzSpan="3" nzRequired>Điện thoại</nz-form-label>
+    <nz-form-control nzSpan="21" nzErrorTip="Số điện thoại không được để trống">
+      <input nz-input formControlName="cDienthoai" id="cDienthoai" name="cDienthoai" placeholder="Nhập số điện thoại" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="avatar" nzSpan="3">Ảnh đại diện</nz-form-label>
+    <nz-form-control nzSpan="21" *ngIf="acction=='add'">
+      <nz-upload class="avatar-uploader" nzName="avatarAdd" nzListType="picture-card" [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+        <ng-container *ngIf="avatar == null">
+          <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="avatar" [src]="this.avatar" style="width: 100%" />
+      </nz-upload>
+    </nz-form-control>
+    <nz-form-control nzSpan="21" *ngIf="acction=='edit'">
+      <nz-upload class="avatar-uploader" nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+        <ng-container *ngIf="this.data.cAnh == null && avatar == null">
+          <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="!this.data.cAnh && avatar" [src]="this.avatar" style="width: 100%" />
+        <img *ngIf="this.data.cAnh && avatar" [src]="this.avatar" style="width: 100%" />
+        <img *ngIf="this.data.cAnh && !avatar" [src]="'https://localhost:44363/avatars/'+this.data.cAnh"
+          style="width: 100%" />
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+  <!-- <nz-form-item *ngIf="acction=='edit'">
+    <nz-form-label nzFor="avatar" nzSpan="3">Ảnh đại diện</nz-form-label>
+
+  </nz-form-item> -->
+  <nz-form-item>
+    <nz-form-control nzSpan="18" nzOffset="6">
+      <button [nzLoading]="isOkLoading" nz-button nzType="primary" (click)="submitForm()">
+        Lưu
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

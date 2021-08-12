@@ -1,0 +1,55 @@
+<!-- <h3 *ngIf="id == 0">Thêm Danh Mục</h3> -->
+<!-- <h3 *ngIf="id > 0">Cập Nhập Danh Mục</h3> -->
+<style>
+  [nz-form] {
+        max-width: 800px;
+      }
+</style>
+
+<form nz-form [formGroup]="listNameForm" >
+  <nz-form-item>
+    <nz-form-label *ngIf="acction=='add'" [nzSpan]="5" nzRequired nzFor="c_Code">Tên Mã</nz-form-label>
+    <nz-form-control *ngIf="acction=='add'" [nzSpan]="12"  nzErrorTip="Vui lòng nhập Code!">
+      <input class="inputnamecode" id="c_Code" type="text" nz-input formControlName="c_Code" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label *ngIf="acction=='add'" [nzSpan]="5" nzRequired nzFor="c_TenQuyen">Tên quyền</nz-form-label>
+    <nz-form-control *ngIf="acction=='add'" [nzSpan]="12"  nzErrorTip="Vui lòng nhập Tên!">
+      <input class="inputnamecode" id="c_TenQuyen" type="text" nz-input formControlName="c_TenQuyen" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-label *ngIf="acction=='edit'" [nzSpan]="5" nzRequired nzFor="c_Code">Tên Mã</nz-form-label>
+    <nz-form-control *ngIf="acction=='edit'" [nzSpan]="12"  nzErrorTip="Vui lòng nhập Code!">
+      <input class="inputnamecode" id="c_Code" type="text" nz-input formControlName="c_Code" />
+    </nz-form-control>
+  <nz-form-item>
+    <nz-form-label *ngIf="acction=='edit'" [nzSpan]="5" nzRequired nzFor="c_TenQuyen">Tên quyền</nz-form-label>
+    <nz-form-control *ngIf="acction=='edit'" [nzSpan]="12"  nzErrorTip="Vui lòng nhập Tên!">
+      <input class="inputnamecode" id="c_TenQuyen" type="text" nz-input formControlName="c_TenQuyen" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="5" nzFor="c_TrangThai" nzRequired>Trạng Thái</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng chọn trạng thái!">
+      <nz-select
+        id="c_TrangThai"
+        formControlName="c_TrangThai"
+        nzPlaceHolder="Chọn Trạng Thái"
+        (ngModelChange)="genderChange()"
+      >
+        <nz-option nzValue="Sử dụng" nzLabel="Sử dụng"></nz-option>
+        <nz-option nzValue="Không sử dụng" nzLabel="Không sử dụng"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzSpan]="12" [nzOffset]="5">
+      <!-- <button nz-button nzType="primary" (click) = "Themdanhmuc()" *ngIf="id == 0">Thêm</button>
+      <button nz-button nzType="primary" (click) = "updateCategory()" *ngIf="id > 0">Cập Nhập</button> -->
+      <button [nzLoading]="isOkLoading" nz-button nzType="primary" (click)="submitForm()">
+        Lưu
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

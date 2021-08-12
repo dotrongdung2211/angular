@@ -1,0 +1,122 @@
+<nz-card nzTitle="Danh sách tài khoản" *ngIf="user_Info.cChucvu==true">
+  <button nz-button nzType="primary" (click)="createModal(null)">
+    <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+    <span>Thêm mới</span>
+  </button>
+  <nz-table
+    #nzTable
+    #filterTable
+    #rowSelectionTable
+    nzShowPagination
+    [nzData]="listOfDisplayData"
+    [nzPageSize]="10"
+    nzSpan="24"
+  >
+    <thead>
+      <tr class="text-center" nz-row>
+        <th nz-col nzSpan="3" class="text-center">Tên tài khoản</th>
+        <!-- <th nz-col nzSpan="5" class="text-center">Họ và tên</th> -->
+        <th
+          nz-col
+          nzCustomFilter
+          [nzSpan]="columnName.span"
+          [nzSortOrder]="columnName.sortOrder"
+          [nzSortFn]="columnName.sortFn"
+          [nzSortDirections]="columnName.sortDirection"
+          [nzFilterMultiple]="columnName.filterMutiple"
+          [nzFilters]="columnName.listOfFilter"
+          [nzFilterFn]="columnName.filterFn"
+        >
+          {{ columnName.name }}
+          <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+            <i nz-icon nzType="search"></i>
+          </nz-filter-trigger>
+        </th>
+        <th
+          nz-col
+          [nzSpan]="columnGT.span"
+          [nzSortOrder]="columnGT.sortOrder"
+          [nzSortFn]="columnGT.sortFn"
+          [nzSortDirections]="columnGT.sortDirection"
+          [nzFilterMultiple]="columnGT.filterMutiple"
+          [nzFilters]="columnGT.listOfFilter"
+          [nzFilterFn]="columnGT.filterFn"
+        >
+          {{ columnGT.name }}
+        </th>
+        <th nz-col nzSpan="2" class="text-center">Ngày sinh</th>
+        <th nz-col nzSpan="2" class="text-center">Chức vụ</th>
+        <th nz-col nzSpan="3" class="text-center">Số ĐT</th>
+        <th nz-col nzSpan="4" class="text-center">Địa chỉ</th>
+        <th nz-col nzSpan="2" class="text-center">Chức năng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr nz-row *ngFor="let i of filterTable.data">
+        <td nz-col nzSpan="3" class="text-center">
+          {{ i.cTaikhoan }}
+        </td>
+        <td nz-col nzSpan="5" >
+          <nz-avatar *ngIf="i.cAnh" nzSize="large" nzIcon="user" nzSrc="https://localhost:44363/Avatars/{{i.cAnh}}" nzAlt="{{i.cTen}}"></nz-avatar>
+          <nz-avatar *ngIf="!i.cAnh" nzSize="large" nzIcon="user"></nz-avatar>
+
+          {{ i.cTen }}
+        </td>
+        <td nz-col nzSpan="3" class="text-center">{{ i.cGioitinh == 1 ? "Nam" : "Nữ" }}</td>
+        <td nz-col nzSpan="2" class="text-center">{{ i.cNgaysinh | date: "dd/MM/yyy" }}</td>
+        <td nz-col nzSpan="2" class="text-center">{{ i.cChucvu == 1 ? "Quản lý" : "Nhân viên" }}</td>
+        <td nz-col nzSpan="3" class="text-center">{{ i.cDienthoai }}</td>
+        <td nz-col nzSpan="4" class="text-center">{{ i.cDiachi }}</td>
+
+
+        <td nz-col nzSpan="2" class="text-center">
+          <button
+            nz-button
+            (click)="createModal(i)"
+            nz-tooltip
+            nzTooltipTitle="Sửa"
+            nzShape="circle"
+          >
+            <i
+              nz-icon
+              nzType="edit"
+              nzTheme="outline"
+              style="color: rgb(0, 68, 255)"
+            ></i>
+          </button>
+          <nz-divider nzType="vertical" style="margin: 0px 5px"></nz-divider>
+          <button
+            nz-popconfirm
+            nzPopconfirmTitle="Bạn có chắc muốn xóa ?"
+            (nzOnConfirm)="deleteAccount(i.cTaikhoan)"
+            (nzOnCancel)="(null)"
+            nzPopconfirmPlacement="top"
+            nz-button
+            nz-tooltip
+            nzTooltipTitle="Xóa"
+            nzShape="circle"
+          >
+            <i
+              nz-icon
+              nzType="delete"
+              nzTheme="outline"
+              style="color: rgb(243, 105, 105)"
+            ></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+      <div class="search-box">
+        <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" oninput="this.value = this.value.toUpperCase()" />
+        <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">
+          Search
+        </button>
+        <button nz-button nzSize="small" (click)="reset()">Reset</button>
+      </div>
+    </div>
+  </nz-dropdown-menu>
+</nz-card>
+<h2 *ngIf="user_Info.cChucvu==false">Bạn không có quyền truy cập !</h2>

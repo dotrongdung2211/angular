@@ -1,0 +1,76 @@
+<h3 style="margin-bottom: 50px;">Danh Mục Người Dùng</h3>
+
+<button nz-button nzType="primary" style=" margin-bottom: 15px;  " (click)="createModal(null)">
+  <i nz-icon nzType="plus-circle" nzTheme="outline"></i>
+  <span>Thêm mới</span>
+</button>
+
+
+<nz-table  nzBordered #nzTable #filterTable #basicTable [nzData]="dataTable" >
+  <thead>
+    <tr >
+      <th>ID</th>
+      <th>Tên Mã</th>
+      <th>Email</th>
+      <th>Mật Khẩu</th>
+      <th>Họ và Tên</th>
+      <th>Số điện thoại</th>
+      <th>Ngày Tạo</th>
+      <th>Trạng Thái</th>
+      <th nzCustomFilter nzColumnKey="name">Tên Quyền
+      </th>
+      <th>Chức Năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of dataTable">
+      <td>{{user.id}}</td>
+      <td>{{user.c_Code}}</td>
+      <td>{{user.c_Email}}</td>
+      <td>{{user.c_Avatar}}</td>
+      <td>{{user.c_HoVaTen}}</td>
+      <td>{{user.c_SoDienThoai}}</td>
+      <td>{{user.c_NgayTao}}</td>
+      <td> <button nz-button nzType="primary"nzDanger *ngIf=" user.c_TrangThai == 1 ">Không sử dụng</button>
+          <button class="btn1" nz-button nzType="primary"  *ngIf="user.c_TrangThai == 2">Sử dụng</button>
+      </td>
+      <td>{{user.c_TenQuyen}}</td>
+      <td>
+
+        <button
+
+
+        nz-button
+        nz-tooltip
+        nzTooltipTitle="Xóa"
+        nzShape="circle"
+      >
+        <i
+          nz-icon
+          nzType="delete"
+          nzTheme="outline"
+          style="color: rgb(243, 105, 105)"
+        ></i>
+        <!-- (click)="editCategory(list.id)" -->
+      </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button
+
+        nz-button
+        nz-tooltip
+        nzTooltipTitle="Sửa"
+        nzShape="circle"
+      >
+        <i
+          nz-icon
+          nzType="edit"
+          nzTheme="outline"
+          style="color: rgb(87, 122, 218)"
+        ></i>
+      </button>
+
+      </td>
+
+    </tr>
+  </tbody>
+</nz-table>
